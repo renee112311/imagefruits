@@ -134,18 +134,18 @@
               p PNG、JPEG、JPG、GIF、BMP
               b-button(type="newCarou4") 更換第四張
 
-            //- b-form(@submit="NN")
-            //-   b-form-file(
-            //-     v-model="file"
-            //-     :state="filestate"
-            //-     placeholder="瀏覽檔案或是拖曳至此"
-            //-     drop-placeholder="將檔案拖曳至此"
-            //-     required
-            //-     browse-text="瀏覽"
-            //-     accept="image/*"
-            //-     @input="validateFile"
-            //-   )
-            //-   b-btn(type="NN") 上傳
+            b-form(@submit="NN")
+              b-form-file(
+                v-model="file"
+                :state="filestate"
+                placeholder="瀏覽檔案或是拖曳至此"
+                drop-placeholder="將檔案拖曳至此"
+                required
+                browse-text="瀏覽"
+                accept="image/*"
+                @input="validateFile"
+              )
+              b-btn(type="NN") 上傳
 
 </template>
 <script>

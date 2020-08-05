@@ -511,7 +511,7 @@ app.post('/avatar', async (req, res) => {
           }
         )
         res.status(200)
-        res.send({ success: true, message: '', name, _id: result._id })
+        res.send({ success: true, message: '', name: path.basename(req.file.path), _id: result._id })
       } catch (error) {
         if (error.name === 'ValidationError') {
           // 資料格式錯誤
@@ -826,7 +826,7 @@ app.post('/carousel', async (req, res) => {
         )
         console.log(req.session.user)
         res.status(200)
-        res.send({ success: true, message: '', name, _id: result._id })
+        res.send({ success: true, message: '', name: path.basename(req.file.path), _id: result._id })
       } catch (error) {
         if (error.name === 'ValidationError') {
           // 資料格式錯誤

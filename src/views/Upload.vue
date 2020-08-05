@@ -123,7 +123,7 @@ export default {
           setTimeout(() => {
             this.$store.commit('successUp', this.images)
             console.log(this.imagesL)
-            // this.$router.push('/uploadSC')
+            this.$router.push('/uploadSC')
           }, 3000)
         }
       }

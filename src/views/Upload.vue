@@ -86,7 +86,7 @@ export default {
             return
           }
         }
-        this.spinnerstyle = 'block'
+        this.spinnerstyle.display = 'block'
         const fd = new FormData()
         for (const i of this.files) {
           fd.append('image', i)

@@ -205,6 +205,13 @@ export default {
       }
     },
     deleteImg (index) {
+      let searchindex = -1
+      const searchimgID = this.searchimg[index]._id
+      this.images.find(function (item, i) {
+        if (item._id === searchimgID) {
+          searchindex = i
+        }
+      })
       this.axios.delete(process.env.VUE_APP_APIURL + '/file/' + this.images[index]._id)
         .then(response => {
           this.images.splice(index, 1)

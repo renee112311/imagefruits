@@ -335,7 +335,7 @@ app.post('/file', async (req, res) => {
           // 資料格式錯誤
           const key = Object.keys(error.errors)[0]
           const message = error.errors[key].message
-          console.log(req)
+          console.log(req.files)
           res.status(400)
           res.send({ success: false, message })
         } else {

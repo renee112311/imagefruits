@@ -57,7 +57,6 @@ export default {
     submit (event) {
       event.preventDefault()
       if (this.files.length === 0) {
-        this.state = false
         this.$swal({
           title: '沒有檔案',
           text: '請選擇單個或多個檔案',
@@ -65,7 +64,6 @@ export default {
           confirmButtonText: '知道了'
         })
       } else if (this.files.length > 5) {
-        this.state = false
         this.$swal({
           title: '檔案過多',
           text: '本次最多能上傳5張',
@@ -106,23 +104,19 @@ export default {
                 }
               )
             }
-            this.state = true
             this.$store.commit('successUp', this.images)
             console.log(this.imagesL)
             this.$router.push('/uploadSC')
             console.log(this.images)
           })
           .catch(error => {
-            this.state = false
             this.$swal({
               title: '發生錯誤',
               text: error.response.data.message,
               icon: 'error',
               confirmButtonText: '知道了'
             })
-            this.state = false
           })
-        
       }
     }
   },

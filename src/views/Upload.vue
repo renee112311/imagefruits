@@ -33,6 +33,10 @@ export default {
   computed: {
     user () {
       return this.$store.getters.user
+    },
+    imagesL () {
+      const localstorage = JSON.parse(localStorage.getItem('vuex'))
+      return localstorage.successUp
     }
   },
   methods: {
@@ -60,6 +64,14 @@ export default {
           icon: 'warning',
           confirmButtonText: '知道了'
         })
+      } else if (this.files.length > 5) {
+        this.state = false
+        this.$swal({
+          title: '檔案過多',
+          text: '本次最多能上傳5張',
+          icon: 'warning',
+          confirmButtonText: '知道了'
+        })
       } else {
         for (const file of this.files) {
           if (file === null || file.size >= 2000 * 2000 || !file.type.includes('image')) {
@@ -69,45 +81,49 @@ export default {
               icon: 'error',
               confirmButtonText: '知道了'
             })
-          } else {
-            const fd = new FormData()
-            fd.append('image', file)
-            fd.append('title', '無題')
-            fd.append('description', '沒有任何圖片敘述')
-            fd.append('album', null)
-            fd.append('privacy', '公開')
-            this.axios.post(process.env.VUE_APP_APIURL + '/file', fd, {
-              headers: {
-                'Content-Type': 'multipart/form-data'
-              }
-            })
-              .then(response => {
-                this.images.push(
-                  {
-                    src: process.env.VUE_APP_APIURL + '/file/' + response.data.name,
-                    _id: response.data._id
-                  }
-                )
-                this.state = true
-              })
-              .catch(error => {
-                this.state = false
-                this.$swal({
-                  title: '發生錯誤',
-                  text: error.response.data.message,
-                  icon: 'error',
-                  confirmButtonText: '知道了'
-                })
-              })
+            return
           }
         }
-      }
-
-      if (this.state) {
-        setTimeout(() => {
-          this.$store.commit('successUp', this.images)
-          this.$router.push('/uploadSC')
-        }, 500)
+        const fd = new FormData()
+        for (const i of this.files) {
+          fd.append('image', i)
+          fd.append('title', '無題')
+          fd.append('description', '沒有任何圖片敘述')
+          fd.append('album', null)
+          fd.append('privacy', '公開')
+        }
+        this.axios.post(process.env.VUE_APP_APIURL + '/file', fd, {
+          headers: {
+            'Content-Type': 'multipart/form-data'
+          }
+        })
+          .then(response => {
+            for (let i = 0; i < response.data.name.length; i++) {
+              this.images.push(
+                {
+                  src: process.env.VUE_APP_APIURL + '/file/' + response.data.name[i].name,
+                  _id: response.data.name[i]._id
+                }
+              )
+            }
+            this.state = true
+          })
+          .catch(error => {
+            this.state = false
+            this.$swal({
+              title: '發生錯誤',
+              text: error.response.data.message,
+              icon: 'error',
+              confirmButtonText: '知道了'
+            })
+            this.state = false
+          })
+        if (this.state) {
+          setTimeout(() => {
+            this.$store.commit('successUp', this.images)
+            this.$router.push('/uploadSC')
+          }, 2000)
+        }
       }
     }
   },

@@ -91,7 +91,7 @@ export default {
   },
   methods: {
     clearStorage () {
-      var localstorage = JSON.parse(localStorage.getItem('vuex'))
+      const localstorage = JSON.parse(localStorage.getItem('vuex'))
       this.images.length = 0
       localstorage.successUp.length = 0
       localStorage.setItem('vuex', JSON.stringify(localstorage))
@@ -152,8 +152,8 @@ export default {
   },
   computed: {
     imagesL () {
-      var localstorage = JSON.parse(localStorage.getItem('vuex'))
-      return localstorage.successUp[0]
+      const localstorage = JSON.parse(localStorage.getItem('vuex'))
+      return localstorage.successUp
     },
     user () {
       return this.$store.getters.user
@@ -173,7 +173,7 @@ export default {
             album: d.album
           }
         })
-        for (var image of this.imagesL) {
+        for (const image of this.imagesL) {
           let idx = -1
           this.allimages.find(function (item, i) {
             if (item._id === image._id) {

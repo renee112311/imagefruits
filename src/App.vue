@@ -1,10 +1,10 @@
 <template lang="pug">
   #app
     #loading(:style="styleloading")
-        #loadinner
-          img(src='./assets/LOGO2.svg')
-          h2 載入中
-    #nav
+      #loadinner
+        img(src='./assets/LOGO2.svg')
+        h2 loading...
+    #nav(:style="stylenav")
       b-navbar(toggleable="lg" fixed="top" :style="styleList")
         b-navbar-brand(to='/' style="width:190px;padding-top:0px;margin-bottom:4px")
           img(src="./assets/LOGO.svg" style="width:100%;")
@@ -132,7 +132,10 @@ export default {
       styleloading: {
         display: 'table',
         opacity: '1',
-        transition: 'all 1.5s'
+        transition: 'all 1.5s ease'
+      },
+      stylenav: {
+        display: 'none'
       }
     }
   },
@@ -322,10 +325,11 @@ export default {
   mounted () {
     window.addEventListener('scroll', this.handleScroll)
     window.onload = () => {
-      console.log('window ok')
       setTimeout(() => {
         this.styleloading.opacity = 0
         this.styleloading.display = 'none'
+        this.styleloading.transition = 'all 1.5s ease'
+        this.stylenav.display = 'block'
       }, 1000)
     }
     this.heartbeat()

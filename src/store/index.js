@@ -9,7 +9,7 @@ export default new Vuex.Store({
     user: '',
     author: '',
     album: '',
-    successUp: [],
+    successUp: null,
     carouselimg: []
   },
   mutations: {
@@ -20,10 +20,10 @@ export default new Vuex.Store({
       state.user = ''
     },
     successClean (state) {
-      state.successUp.length = 0
+      state.successUp = null
     },
     successUp (state, data) {
-      state.successUp.push(data)
+      state.successUp = data
     },
     author (state, data) {
       state.author = data
@@ -40,8 +40,7 @@ export default new Vuex.Store({
       return state.user
     },
     successUp (state) {
-      var successUp0 = state.successUp[0]
-      return successUp0
+      return state.successUp
     },
     author (state) {
       return state.author

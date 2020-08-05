@@ -294,7 +294,7 @@ app.post('/file', async (req, res) => {
     res.send({ success: false, message: '格式錯誤' })
     return
   }
-  upload.array('image', 12)(req, res, async error => {
+  upload.array('image', 5)(req, res, async error => {
     if (error instanceof multer.MulterError) {
       let message = ''
       if (error.code === 'LIMIT_FILE_SIZE') {
@@ -310,31 +310,36 @@ app.post('/file', async (req, res) => {
       res.send({ success: false, message: '伺服器錯誤' })
     } else {
       try {
-        for (let file of req.files) {
+        const resultall = []
+        for (let i = 0; i < req.files.length; i++) {
           let name = ''
           if (process.env.FTP === 'true') {
-            name = path.basename(file.path)
+            name = path.basename(req.files[i].path)
           } else {
-            name = file.filename
+            name = req.files[i].filename
           }
+          console.log(req.body.title)
           const result = await db.files.create(
             {
               user: req.session.user,
-              title: req.body.title,
-              description: req.body.description,
-              album: req.body.album,
-              privacy: req.body.privacy,
+              title: req.body.title[i],
+              description: req.body.description[i],
+              album: req.body.album[i],
+              privacy: req.body.privacy[i],
               name
             }
           )
-          res.status(200)
-          res.send({ success: true, message: '', name, _id: result._id })
+          resultall.push(result)
+          console.log(result)
         }
+        console.log(resultall)
+        res.status(200)
+        res.send({ success: true, message: '', name: resultall, _id: resultall })
       } catch (error) {
         if (error.name === 'ValidationError') {
           // 資料格式錯誤
-          console.log(path.basename(req.files[0].path))
-          console.log(req.files)
+          const key = Object.keys(error.errors)[0]
+          const message = error.errors[key].message
           res.status(400)
           res.send({ success: false, message })
         } else {
@@ -347,8 +352,6 @@ app.post('/file', async (req, res) => {
     }
   })
 })
-
-
 
 // 某作者的檔案
 app.get('/author/:author', async (req, res) => {

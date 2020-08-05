@@ -815,6 +815,7 @@ app.post('/carousel', async (req, res) => {
       res.send({ success: false, message: '伺服器錯誤' })
     } else {
       try {
+        console.log(req.file.path)
         let name = ''
         if (process.env.FTP === 'true') {
           name = path.basename(req.file.path)
@@ -824,7 +825,6 @@ app.post('/carousel', async (req, res) => {
         const result = await db.carouselimgs.create(
           { name }
         )
-        console.log(req.session.user)
         console.log(name)
         res.status(200)
         res.send({ success: true, message: '', name: path.basename(req.file.path), _id: result._id })

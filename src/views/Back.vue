@@ -163,13 +163,20 @@ export default {
   },
   methods: {
     banUser (index) {
-      if (this.allUsers[index].banned) {
+      const searchindex = this.allUsers.indexOf(this.searchuser[this.index]._id)
+      let searchindex = -1
+      this.allUsers.find(function (item, i) {
+        if (item._id === this.searchuser[this.index]._id) {
+          searchindex = i
+        }
+      })
+      if (this.allUsers[searchindex].banned) {
         this.axios.patch(
-          process.env.VUE_APP_APIURL + '/users/banned/' + this.allUsers[index]._id,
+          process.env.VUE_APP_APIURL + '/users/banned/' + this.allUsers[searchindex]._id,
           { banned: false }
         )
           .then(response => {
-            this.allUsers[index].banned = false
+            this.allUsers[searchindex].banned = false
           })
           .catch(error => {
             this.$swal({
@@ -181,11 +188,11 @@ export default {
           })
       } else {
         this.axios.patch(
-          process.env.VUE_APP_APIURL + '/users/banned/' + this.allUsers[index]._id,
+          process.env.VUE_APP_APIURL + '/users/banned/' + this.allUsers[searchindex]._id,
           { banned: true }
         )
           .then(response => {
-            this.allUsers[index].banned = true
+            this.allUsers[searchindex].banned = true
           })
           .catch(error => {
             this.$swal({

@@ -3,7 +3,7 @@
     b-container
       span(@click="tomyimages" style="cursor:pointer;margin-bottom:1.5rem;font-size:18px") <<返回「我的圖片」
       div#albumCover
-        img(v-if="images.length!==0" :src="images[0].src")
+        img(v-if="images[0]!==undefined" :src="images[0].src")
         b-form-input(v-if="edit" v-model="model_titl")
         h3(v-else) {{this.title}}
         b-form-textarea(v-if="edit" v-model="model_des")

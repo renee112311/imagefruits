@@ -823,7 +823,7 @@ app.post('/carousel', async (req, res) => {
           name = req.file.filename
         }
         const result = await db.carouselimgs.create(
-          { name }
+          { name: path.basename(req.file.path) }
         )
         console.log(name)
         res.status(200)

@@ -310,7 +310,7 @@ app.post('/file', async (req, res) => {
       res.send({ success: false, message: '伺服器錯誤' })
     } else {
       try {
-        for (const file of req.files) {
+        for (let file of req.files) {
           let name = ''
           if (process.env.FTP === 'true') {
             name = path.basename(file.path)
@@ -328,13 +328,11 @@ app.post('/file', async (req, res) => {
             }
           )
           res.status(200)
-          res.send({ success: true, message: '', name: file.filename, _id: result._id })
+          res.send({ success: true, message: '', name: path.basename(file.path), _id: result._id })
         }
       } catch (error) {
         if (error.name === 'ValidationError') {
           // 資料格式錯誤
-          const key = Object.keys(error.errors)[0]
-          const message = error.errors[key].message
           console.log(path.basename(req.files[0].path))
           console.log(req.files)
           res.status(400)

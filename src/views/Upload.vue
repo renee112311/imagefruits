@@ -29,7 +29,7 @@ export default {
       state: true,
       images: [],
       banned: false,
-      spinnerstyle:{
+      spinnerstyle: {
         display:'none'
       }
     }

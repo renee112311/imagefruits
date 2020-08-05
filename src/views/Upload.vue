@@ -30,7 +30,7 @@ export default {
       images: [],
       banned: false,
       spinnerstyle: {
-        display:'none'
+        display: 'none'
       }
     }
   },

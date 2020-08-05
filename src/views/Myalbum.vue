@@ -331,7 +331,15 @@ export default {
           .then(response => {
             this.select = false
             this.options.length = 0
-            for (var image of this.images) {
+            let mdindex = -1
+            const mdID = this.options[i]._id
+            this.images.find(function (item, i) {
+              if (item._id === mdID) {
+                mdindex = i
+              }
+            })
+            this.images.splice(mdindex,1)
+            for (const image of this.images) {
               image.checked = false
             }
           })

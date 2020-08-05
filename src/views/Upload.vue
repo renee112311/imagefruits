@@ -107,6 +107,9 @@ export default {
               )
             }
             this.state = true
+            this.$store.commit('successUp', this.images)
+            console.log(this.imagesL)
+            this.$router.push('/uploadSC')
             console.log(this.images)
           })
           .catch(error => {
@@ -119,13 +122,7 @@ export default {
             })
             this.state = false
           })
-        if (this.state) {
-          setTimeout(() => {
-            this.$store.commit('successUp', this.images)
-            console.log(this.imagesL)
-            this.$router.push('/uploadSC')
-          }, 3000)
-        }
+        
       }
     }
   },

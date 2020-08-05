@@ -33,10 +33,13 @@
             b-card-title {{search[index].title}}
             //- 描述
             b-card-text {{search[index].description}}
+            //- 愛心
             span.heart(v-if="search[index].liked" @click="unfavorite")
               font-awesome-icon(:icon="['fas','heart']")
-            span.heart(v-else @click="favorite")
+              span.position-absolute(style="bottom:-70%;left:0;font-size:18px") 點擊取消
+            span.heart.position-relative(v-else @click="favorite")
               font-awesome-icon(:icon="['far','heart']")
+              span.position-absolute(style="bottom:-70%;left:0;font-size:18px") 點擊收藏
             //- 作者
             div
               span(style="color:#777") BY

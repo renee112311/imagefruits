@@ -18,7 +18,7 @@
             div.cardimg
               b-card-img(:src="images[index].src")
             b-card-body
-          b-col(col cols="12" md="9")
+          b-col(col cols="12" md="3")
             //- 標題
             b-card-title {{images[index].title}}
             //- 描述

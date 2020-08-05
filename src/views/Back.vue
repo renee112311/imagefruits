@@ -7,15 +7,16 @@
           b-tab(title='會員管理' active)
             h4 會員管理
             //- search
-            b-row(style="margin:20px;padding:0 20rem")
-              b-col(col cols="12" lg="3")
+            b-row.searchrow
+              b-col(col cols="12" xl="4")
                 b-form-select.form-control(v-model="searchType")
                   option 會員帳號
                   option 會員ID編號
-              b-col(col cols="12" lg="9")
+              b-col(col cols="12" xl="8")
                 b-nav-form
                   b-form-input(type="text" size="sm" v-model="keywords" placeholder="輸入關鍵字即可搜尋")
             b-table-simple(
+
               striped
               hover
               responsive="sm"
@@ -27,7 +28,7 @@
                   b-th 動作
               b-tbody
                 b-tr(v-if="searchuser.length === 0")
-                  td(colspan="2") 沒有資料
+                  td 沒有資料
                 b-tr(v-else v-for="(allUser, index) in searchuser" :key="'key' + index")
                   b-td
                     span {{ allUser._id }}
@@ -40,7 +41,7 @@
           b-tab(title='檔案管理')
             h4 檔案管理
             //- search
-            b-row(style="margin:20px;padding:0 20rem")
+            b-row.searchrow
               b-col(col cols="12" lg="3")
                 b-form-select.form-control(v-model="searchType")
                   option 會員帳號
@@ -133,18 +134,18 @@
               p PNG、JPEG、JPG、GIF、BMP
               b-button(type="newCarou4") 更換第四張
 
-            b-form(@submit="NN")
-              b-form-file(
-                v-model="file"
-                :state="filestate"
-                placeholder="瀏覽檔案或是拖曳至此"
-                drop-placeholder="將檔案拖曳至此"
-                required
-                browse-text="瀏覽"
-                accept="image/*"
-                @input="validateFile"
-              )
-              b-btn(type="NN") 上傳
+            //- b-form(@submit="NN")
+            //-   b-form-file(
+            //-     v-model="file"
+            //-     :state="filestate"
+            //-     placeholder="瀏覽檔案或是拖曳至此"
+            //-     drop-placeholder="將檔案拖曳至此"
+            //-     required
+            //-     browse-text="瀏覽"
+            //-     accept="image/*"
+            //-     @input="validateFile"
+            //-   )
+            //-   b-btn(type="NN") 上傳
 
 </template>
 <script>

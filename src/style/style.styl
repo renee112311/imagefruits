@@ -98,6 +98,7 @@ shadow1=rgba(0,0,0,0.3)
         padding-left 20px
       .form-control,.form-inline,select,option
         text-align center
+        text-align-last center
         height 40px
         width 100%
       .form-control::placeholder
@@ -847,6 +848,11 @@ shadow1=rgba(0,0,0,0.3)
         th
           color gray1
           font-weight 500
+      .searchrow
+        margin 20px
+        padding 0 20rem
+      select
+        text-align-last center
     .form-control,.form-inline
       text-align center
       height 40px
@@ -933,6 +939,11 @@ shadow1=rgba(0,0,0,0.3)
           margin 15px
           background-color yellow1
           color rgb(80,80,80)
+          transition all 0.3s ease
+          &:hover
+            color orange1
+            filter brightness(115%)
+            border 1px solid orange1
 #modal-img
   height 100vh
   .modal-dialog
@@ -1041,6 +1052,12 @@ shadow1=rgba(0,0,0,0.3)
           color header2
           font-size 40px
           cursor pointer
+          .position-absolute
+            display none
+          &:hover
+            filter brightness(130%)
+            .position-absolute
+              display block
         .card-title
           color header1
         .card-text
@@ -1122,6 +1139,10 @@ shadow1=rgba(0,0,0,0.3)
   .berry
     width 20% !important
     height auto !important
+  #back
+    .searchrow
+      margin 5px !important
+      padding 0 5rem !important
       
 @media (max-width:991.98px) 
   #nav
@@ -1158,6 +1179,10 @@ shadow1=rgba(0,0,0,0.3)
         overflow hidden
         &:first-child
           padding 2rem !important
+  #back
+    .searchrow
+      margin 3px !important
+      padding 0 1rem !important
   #modal-img-public
     height 100vh
     .modal-dialog

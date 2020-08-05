@@ -115,13 +115,14 @@ export default {
         this.axios.patch(process.env.VUE_APP_APIURL + '/users/edit/' + this.userid, { favorite: this.myfavorites })
           .then(response => {
             this.search[this.index].liked = true
-            for (var myfavorite of this.myfavorites) {
-              var index = -1
+            for (const myfavorite of this.myfavorites) {
+              let index = -1
               this.search.find(function (item, i) {
                 if (item._id === myfavorite) {
                   index = i
                 }
               })
+              console.log(index)
               this.search[index].liked = true
             }
             this.$swal({

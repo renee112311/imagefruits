@@ -338,7 +338,7 @@ export default {
                 mdindex = i
               }
             })
-            this.images.splice( mdindex , 1 )
+            this.images.splice(mdindex, 1)
             for (const image of this.images) {
               image.checked = false
             }

@@ -147,7 +147,7 @@ export default {
         })
         this.$router.push('/')
       }
-    }, 100)
+    }, 500)
   }
 }
 </script>

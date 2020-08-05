@@ -319,7 +319,7 @@ app.post('/file', async (req, res) => {
             name = req.files[i].filename
           }
           console.log(req.files[i])
-          console.log(name)
+          console.log(path.basename(req.files[i].path))
           console.log(req.body.title[i])
           const result = await db.files.create(
             {

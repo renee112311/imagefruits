@@ -81,7 +81,7 @@
                       span 圖片連結
                     td
                   tr
-                    td.d-none.d-xl-table-cell(width="50%")
+                    td.d-none.d-xl-table-cell(width="40%")
                       span {{images[index].src}}
                     td
                       b-button(type="button"
@@ -93,7 +93,7 @@
                       span HTML
                     td
                   tr
-                    td.d-none.d-xl-table-cell(width="50%")
+                    td.d-none.d-xl-table-cell(width="40%")
                       span &lt;img src="{{images[index].src}}"&gt;
                     td
                       b-button(type="button"
@@ -105,7 +105,7 @@
                       span Markdown
                     td
                   tr
-                    td.d-none.d-xl-table-cell(width="50%")
+                    td.d-none.d-xl-table-cell(width="40%")
                       span ![]({{images[index].src}})
                     td
                       b-button(type="button"

@@ -121,9 +121,10 @@ export default {
           })
         if (this.state) {
           setTimeout(() => {
-            // this.$store.commit('successUp', this.images)
+            this.$store.commit('successUp', this.images)
+            console.log(this.imagesL)
             // this.$router.push('/uploadSC')
-          }, 2000)
+          }, 3000)
         }
       }
     }

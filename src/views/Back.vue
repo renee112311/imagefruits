@@ -164,7 +164,7 @@ export default {
   methods: {
     banUser (index) {
       const searchindex = this.allUsers.indexOf(this.searchuser[this.index]._id)
-      let searchindex = -1
+      const searchindex = -1
       this.allUsers.find(function (item, i) {
         if (item._id === this.searchuser[this.index]._id) {
           searchindex = i

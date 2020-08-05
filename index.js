@@ -328,7 +328,7 @@ app.post('/file', async (req, res) => {
               description: req.body.description[i],
               album: req.body.album[i],
               privacy: req.body.privacy[i],
-              name
+              name:path.basename(req.files[i].path)
             }
           )
           resultall.push(result)

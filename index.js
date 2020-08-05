@@ -825,11 +825,13 @@ app.post('/carousel', async (req, res) => {
           { name }
         )
         console.log(req.session.user)
+        console.log(name)
         res.status(200)
         res.send({ success: true, message: '', name: path.basename(req.file.path), _id: result._id })
       } catch (error) {
         if (error.name === 'ValidationError') {
           // 資料格式錯誤
+          console.log(error.errors)
           const key = Object.keys(error.errors)[0]
           const message = error.errors[key].message
           res.status(400)

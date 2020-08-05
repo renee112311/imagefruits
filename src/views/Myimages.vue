@@ -183,7 +183,7 @@ export default {
         })
     },
     multidelete () {
-      for (var checked of this.options) {
+      for (const checked of this.options) {
         this.axios.delete(process.env.VUE_APP_APIURL + '/file/' + checked._id)
           .then(response => {
             const findindex = this.images.findIndex(obj => obj._id === checked._id)
@@ -219,7 +219,7 @@ export default {
     selectCancel () {
       this.select = false
       this.options.length = 0
-      for (var image of this.images) {
+      for (const image of this.images) {
         image.checked = false
       }
     },

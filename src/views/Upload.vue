@@ -111,8 +111,6 @@ export default {
             this.state = true
           })
           .catch(error => {
-            console.log(response.data)
-            console.log(response.data.name[0])
             this.state = false
             this.$swal({
               title: '發生錯誤',

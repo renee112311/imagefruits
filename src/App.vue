@@ -70,7 +70,7 @@
           b-form-group(
             label="密碼"
             label-for="input-password"
-            description="密碼為 5~20 字"
+            description="密碼至少 1 字"
             invalid-feedback="密碼格式不符"
             :state="state('password')"
           )
@@ -102,7 +102,7 @@
           b-form-group(
             label="密碼"
             label-for="input-password"
-            description="密碼至少 5 字"
+            description="密碼至少 1 字"
             invalid-feedback="格式不符"
             :state="state('password')"
           )

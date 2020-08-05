@@ -188,8 +188,6 @@ export default {
           .then(response => {
             const findindex = this.images.findIndex(obj => obj._id === checked._id)
             this.images.splice(findindex, 1)
-            this.options = null
-            this.select = false
           })
           .catch(() => {
             this.$swal({

@@ -142,13 +142,7 @@ export default {
   methods: {
     state (type) {
       if (type === 'account') {
-        if (this.account.length !== 0 && this.account.length < 5 || this.account.length > 10) {
-          return false
-        } else {
-          return true
-        }
-      } else if (type === 'password') {
-        if (this.password.length !== 0 && this.password.length < 1) {
+        if (this.account.length !== 0 && (this.account.length < 5 || this.account.length > 10)) {
           return false
         } else {
           return true
@@ -164,7 +158,7 @@ export default {
           icon: 'error',
           confirmButtonText: '知道了'
         })
-      }else if (this.password.length < 1) {
+      } else if (this.password.length < 1) {
         this.$swal({
           title: '無法登入',
           text: '密碼格式不符',

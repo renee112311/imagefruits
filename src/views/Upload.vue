@@ -14,7 +14,7 @@
           @input="validateFile"
         )
         p 一張上限4MB
-        p 本次最多能上傳12張
+        p 本次最多能上傳5張
         p PNG、JPEG、JPG、GIF、BMP
         b-button(size="lg" type="submit") 上傳
 </template>

@@ -164,9 +164,9 @@ export default {
   methods: {
     banUser (index) {
       let searchindex = -1
-      console.log(this.searchuser)
+      const searchuserID = this.searchuser[this.index]._id
       this.allUsers.find(function (item, i) {
-        if (item._id === this.searchuser[this.index]._id) {
+        if (item._id === searchuserID) {
           searchindex = i
         }
       })

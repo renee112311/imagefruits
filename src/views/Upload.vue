@@ -17,6 +17,7 @@
         p 本次最多能上傳5張
         p PNG、JPEG、JPG、GIF、BMP
         b-button(size="lg" type="submit") 上傳
+        b-spinner(variant="secondary" :style="spinnerstyle")
 </template>
 
 <script>
@@ -27,7 +28,10 @@ export default {
       files: [],
       state: true,
       images: [],
-      banned: false
+      banned: false,
+      spinnerstyle:{
+        display:'none'
+      }
     }
   },
   computed: {
@@ -82,6 +86,7 @@ export default {
             return
           }
         }
+        this.spinnerstyle = 'block'
         const fd = new FormData()
         for (const i of this.files) {
           fd.append('image', i)
@@ -105,9 +110,7 @@ export default {
               )
             }
             this.$store.commit('successUp', this.images)
-            console.log(this.imagesL)
             this.$router.push('/uploadSC')
-            console.log(this.images)
           })
           .catch(error => {
             this.$swal({

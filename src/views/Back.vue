@@ -163,7 +163,7 @@ export default {
   },
   methods: {
     banUser (index) {
-      const searchindex = -1
+      let searchindex = -1
       const searchuserID = this.searchuser[index]._id
       this.allUsers.find(function (item, i) {
         if (item._id === searchuserID) {
@@ -205,16 +205,16 @@ export default {
       }
     },
     deleteImg (index) {
-      const searchindex = -1
+      let searchindex = -1
       const searchimgID = this.searchimg[index]._id
       this.images.find(function (item, i) {
         if (item._id === searchimgID) {
           searchindex = i
         }
       })
-      this.axios.delete(process.env.VUE_APP_APIURL + '/file/' + this.images[index]._id)
+      this.axios.delete(process.env.VUE_APP_APIURL + '/file/' + this.images[searchindex]._id)
         .then(response => {
-          this.images.splice(index, 1)
+          this.images.splice(searchindex, 1)
         })
         .catch(() => {
           this.$swal({

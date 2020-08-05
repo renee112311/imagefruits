@@ -318,7 +318,9 @@ app.post('/file', async (req, res) => {
           } else {
             name = req.files[i].filename
           }
-          console.log(req.body.title)
+          console.log(req.files[i])
+          console.log(name)
+          console.log(req.body.title[i])
           const result = await db.files.create(
             {
               user: req.session.user,

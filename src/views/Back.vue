@@ -163,7 +163,7 @@ export default {
   },
   methods: {
     banUser (index) {
-      let searchindex = -1
+      const searchindex = -1
       const searchuserID = this.searchuser[index]._id
       this.allUsers.find(function (item, i) {
         if (item._id === searchuserID) {
@@ -205,7 +205,7 @@ export default {
       }
     },
     deleteImg (index) {
-      let searchindex = -1
+      const searchindex = -1
       const searchimgID = this.searchimg[index]._id
       this.images.find(function (item, i) {
         if (item._id === searchimgID) {

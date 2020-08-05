@@ -18,7 +18,7 @@
         p PNG、JPEG、JPG、GIF、BMP
         b-button(size="lg" type="submit") 上傳
         br
-        b-spinner(variant="secondary" :style="spinnerstyle")
+        b-spinner.text-center(variant="secondary" :style="spinnerstyle")
 </template>
 
 <script>

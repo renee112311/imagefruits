@@ -98,6 +98,8 @@ export default {
           }
         })
           .then(response => {
+            console.log(response.data);
+            console.log(response.data.name[0]);
             for (let i = 0; i < response.data.name.length; i++) {
               this.images.push(
                 {
@@ -120,8 +122,8 @@ export default {
           })
         if (this.state) {
           setTimeout(() => {
-            this.$store.commit('successUp', this.images)
-            this.$router.push('/uploadSC')
+            // this.$store.commit('successUp', this.images)
+            // this.$router.push('/uploadSC')
           }, 2000)
         }
       }

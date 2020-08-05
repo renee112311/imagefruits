@@ -328,7 +328,7 @@ app.post('/file', async (req, res) => {
             }
           )
           res.status(200)
-          res.send({ success: true, message: '', name: path.basename(file.path), _id: result._id })
+          res.send({ success: true, message: '', name, _id: result._id })
         }
       } catch (error) {
         if (error.name === 'ValidationError') {
@@ -347,6 +347,8 @@ app.post('/file', async (req, res) => {
     }
   })
 })
+
+
 
 // 某作者的檔案
 app.get('/author/:author', async (req, res) => {

@@ -81,7 +81,7 @@
                       span 圖片連結
                     td
                   tr
-                    td.d-none.d-xl-table-cell(width="50%")
+                    td.d-none.d-xl-table-cell
                       span {{images[index].src}}
                     td
                       b-button(type="button"
@@ -93,7 +93,7 @@
                       span HTML
                     td
                   tr
-                    td.d-none.d-xl-table-cell(width="50%")
+                    td.d-none.d-xl-table-cell
                       span &lt;img src="{{images[index].src}}"&gt;
                     td
                       b-button(type="button"
@@ -105,7 +105,7 @@
                       span Markdown
                     td
                   tr
-                    td.d-none.d-xl-table-cell(width="50%")
+                    td.d-none.d-xl-table-cell
                       span ![]({{images[index].src}})
                     td
                       b-button(type="button"
@@ -183,12 +183,11 @@ export default {
         })
     },
     multidelete () {
-      for (var checked of this.options) {
+      for (const checked of this.options) {
         this.axios.delete(process.env.VUE_APP_APIURL + '/file/' + checked._id)
           .then(response => {
             const findindex = this.images.findIndex(obj => obj._id === checked._id)
             this.images.splice(findindex, 1)
-            this.options = null
           })
           .catch(() => {
             this.$swal({
@@ -219,7 +218,7 @@ export default {
     selectCancel () {
       this.select = false
       this.options.length = 0
-      for (var image of this.images) {
+      for (const image of this.images) {
         image.checked = false
       }
     },

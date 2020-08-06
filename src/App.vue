@@ -70,7 +70,7 @@
           b-form-group(
             label="密碼"
             label-for="input-password"
-            description="密碼為 5~20 字"
+            description="密碼至少 1 字"
             invalid-feedback="密碼格式不符"
             :state="state('password')"
           )
@@ -102,7 +102,7 @@
           b-form-group(
             label="密碼"
             label-for="input-password"
-            description="密碼至少 5 字"
+            description="密碼至少 1 字"
             invalid-feedback="格式不符"
             :state="state('password')"
           )
@@ -142,13 +142,7 @@ export default {
   methods: {
     state (type) {
       if (type === 'account') {
-        if (this.account.length < 5 || this.account.length > 10) {
-          return false
-        } else {
-          return true
-        }
-      } else if (type === 'password') {
-        if (this.password.length < 1) {
+        if (this.account.length !== 0 && (this.account.length < 5 || this.account.length > 10)) {
           return false
         } else {
           return true
@@ -161,6 +155,13 @@ export default {
         this.$swal({
           title: '無法登入',
           text: '帳號格式不符',
+          icon: 'error',
+          confirmButtonText: '知道了'
+        })
+      } else if (this.password.length < 1) {
+        this.$swal({
+          title: '無法登入',
+          text: '密碼格式不符',
           icon: 'error',
           confirmButtonText: '知道了'
         })

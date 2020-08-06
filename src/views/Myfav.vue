@@ -25,8 +25,10 @@
             b-card-text {{images[index].description}}
             span.heart(v-if="images[index].liked" @click="unfavorite")
               font-awesome-icon(:icon="['fas','heart']")
+              span.position-absolute(style="bottom:-70%;left:0;font-size:18px") 點擊取消
             span.heart(v-else @click="favorite")
               font-awesome-icon(:icon="['far','heart']")
+              span.position-absolute(style="bottom:-70%;left:0;font-size:18px") 點擊收藏
             //- 作者
             div
               span(style="color:#777") BY

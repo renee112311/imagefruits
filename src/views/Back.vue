@@ -134,18 +134,18 @@
               p PNG、JPEG、JPG、GIF、BMP
               b-button(type="newCarou4") 更換第四張
 
-            //- b-form(@submit="NN")
-            //-   b-form-file(
-            //-     v-model="file"
-            //-     :state="filestate"
-            //-     placeholder="瀏覽檔案或是拖曳至此"
-            //-     drop-placeholder="將檔案拖曳至此"
-            //-     required
-            //-     browse-text="瀏覽"
-            //-     accept="image/*"
-            //-     @input="validateFile"
-            //-   )
-            //-   b-btn(type="NN") 上傳
+            b-form(@submit="NN")
+              b-form-file(
+                v-model="file"
+                :state="filestate"
+                placeholder="瀏覽檔案或是拖曳至此"
+                drop-placeholder="將檔案拖曳至此"
+                required
+                browse-text="瀏覽"
+                accept="image/*"
+                @input="validateFile"
+              )
+              b-btn(type="NN") 上傳
 
 </template>
 <script>
@@ -163,13 +163,20 @@ export default {
   },
   methods: {
     banUser (index) {
-      if (this.allUsers[index].banned) {
+      let searchindex = -1
+      const searchuserID = this.searchuser[index]._id
+      this.allUsers.find(function (item, i) {
+        if (item._id === searchuserID) {
+          searchindex = i
+        }
+      })
+      if (this.allUsers[searchindex].banned) {
         this.axios.patch(
-          process.env.VUE_APP_APIURL + '/users/banned/' + this.allUsers[index]._id,
+          process.env.VUE_APP_APIURL + '/users/banned/' + this.allUsers[searchindex]._id,
           { banned: false }
         )
           .then(response => {
-            this.allUsers[index].banned = false
+            this.allUsers[searchindex].banned = false
           })
           .catch(error => {
             this.$swal({
@@ -181,11 +188,11 @@ export default {
           })
       } else {
         this.axios.patch(
-          process.env.VUE_APP_APIURL + '/users/banned/' + this.allUsers[index]._id,
+          process.env.VUE_APP_APIURL + '/users/banned/' + this.allUsers[searchindex]._id,
           { banned: true }
         )
           .then(response => {
-            this.allUsers[index].banned = true
+            this.allUsers[searchindex].banned = true
           })
           .catch(error => {
             this.$swal({
@@ -198,9 +205,16 @@ export default {
       }
     },
     deleteImg (index) {
-      this.axios.delete(process.env.VUE_APP_APIURL + '/file/' + this.images[index]._id)
+      let searchindex = -1
+      const searchimgID = this.searchimg[index]._id
+      this.images.find(function (item, i) {
+        if (item._id === searchimgID) {
+          searchindex = i
+        }
+      })
+      this.axios.delete(process.env.VUE_APP_APIURL + '/file/' + this.images[searchindex]._id)
         .then(response => {
-          this.images.splice(index, 1)
+          this.images.splice(searchindex, 1)
         })
         .catch(() => {
           this.$swal({

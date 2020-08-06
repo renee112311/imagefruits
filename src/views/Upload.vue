@@ -14,9 +14,12 @@
           @input="validateFile"
         )
         p 一張上限4MB
-        p 本次最多能上傳12張
+        p 本次最多能上傳5張
         p PNG、JPEG、JPG、GIF、BMP
         b-button(size="lg" type="submit") 上傳
+        br
+        p.text-center
+          b-spinner(variant="secondary" :style="spinnerstyle")
 </template>
 
 <script>
@@ -27,7 +30,10 @@ export default {
       files: [],
       state: true,
       images: [],
-      banned: false
+      banned: false,
+      spinnerstyle: {
+        display: 'none'
+      }
     }
   },
   computed: {
@@ -57,7 +63,6 @@ export default {
     submit (event) {
       event.preventDefault()
       if (this.files.length === 0) {
-        this.state = false
         this.$swal({
           title: '沒有檔案',
           text: '請選擇單個或多個檔案',
@@ -65,7 +70,6 @@ export default {
           confirmButtonText: '知道了'
         })
       } else if (this.files.length > 5) {
-        this.state = false
         this.$swal({
           title: '檔案過多',
           text: '本次最多能上傳5張',
@@ -84,6 +88,7 @@ export default {
             return
           }
         }
+        this.spinnerstyle.display = 'block'
         const fd = new FormData()
         for (const i of this.files) {
           fd.append('image', i)
@@ -106,24 +111,17 @@ export default {
                 }
               )
             }
-            this.state = true
+            this.$store.commit('successUp', this.images)
+            this.$router.push('/uploadSC')
           })
           .catch(error => {
-            this.state = false
             this.$swal({
               title: '發生錯誤',
               text: error.response.data.message,
               icon: 'error',
               confirmButtonText: '知道了'
             })
-            this.state = false
           })
-        if (this.state) {
-          setTimeout(() => {
-            this.$store.commit('successUp', this.images)
-            this.$router.push('/uploadSC')
-          }, 2000)
-        }
       }
     }
   },
@@ -150,7 +148,7 @@ export default {
         })
         this.$router.push('/')
       }
-    }, 100)
+    }, 500)
   }
 }
 </script>

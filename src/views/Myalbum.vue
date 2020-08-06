@@ -3,7 +3,7 @@
     b-container
       span(@click="tomyimages" style="cursor:pointer;margin-bottom:1.5rem;font-size:18px") <<返回「我的圖片」
       div#albumCover
-        img(:src="images[0].src")
+        img(v-if="images[0]!==undefined" :src="images[0].src")
         b-form-input(v-if="edit" v-model="model_titl")
         h3(v-else) {{this.title}}
         b-form-textarea(v-if="edit" v-model="model_des")
@@ -329,11 +329,8 @@ export default {
       for (let i = 0; i < this.options.length; i++) {
         this.axios.patch(process.env.VUE_APP_APIURL + '/file/' + this.options[i]._id, { album: 'null' })
           .then(response => {
-            this.select = false
-            this.options.length = 0
-            for (var image of this.images) {
-              image.checked = false
-            }
+            const findindex = this.images.findIndex(obj => obj._id === this.options[i]._id)
+            this.images.splice(findindex, 1)
           })
           .catch(() => {
             this.$swal({
@@ -348,11 +345,6 @@ export default {
       for (let i = 0; i < this.options.length; i++) {
         this.axios.patch(process.env.VUE_APP_APIURL + '/file/' + this.options[i]._id, { album: this.album })
           .then(response => {
-            this.select = false
-            this.options.length = 0
-            for (var newImage of this.newImages) {
-              newImage.checked = false
-            }
             location.reload()
           })
           .catch(() => {

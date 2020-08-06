@@ -72,10 +72,10 @@
                   b-td
                     span {{ image.name }}
                   b-td
-                    span {{ image.src }}
+                    img(:src="image.src" width="auto" height="20%")
                   b-td
                     b-btn(variant="danger" @click="deleteImg(index)") 刪除
-          b-tab(title='其他')
+          b-tab(title='輪播設定')
             h4 輪播圖
             b-form(@submit="newCarou1")
               b-form-file(

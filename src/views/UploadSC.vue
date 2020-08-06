@@ -3,80 +3,74 @@
     b-container
       b-btn(@click="tomyimages") 您的檔案已經上傳成功，點擊此處前往「我的圖片」
       p 或是在下方直接編輯
-      b-row(v-for="(image,index) in images" :key="index")
-        b-col(cols="4")
-          b-card
-            b-row.inner
-              b-col.w-100(style="text-align:center")
-                b-card-img(:src="image.src")
-        b-col(cols="8")
-          b-col
-            b-card-body
-              table
-                tr
-                  td
-                    //- 隱私權
-                    span(v-if="!image.edit" @click="edit(index)" style="color:#888") ({{image.privacy}})
-                    b-form-select(v-else v-model="image.privacy" :options="privacyOp")
-                  td
-                tr
-                  td
-                    //- 標題
-                    span#imgtitle(v-if="!image.edit" @click="edit(index)" style="font-size:30px") {{image.title}}
-                    b-form-input(v-else v-model="image.title" @blur="update(index)")
-                  td
-                tr
-                  td
-                    //- 描述
-                    span#imgdesc(v-if="!image.edit" @click="edit(index)") {{image.description}}
-                    b-form-textarea(v-else v-model="image.description" @blur="update(index)")
-                  td
-                tr
-                  td
-                    b-btn(v-if="!image.edit" variant="light" @click="edit(index)")
-                      font-awesome-icon(:icon="['far','edit']")
-                  td
-                    b-btn(variant="light" @click="del(index)")
-                      font-awesome-icon(:icon="['far','trash-alt']")
-          b-col
-            b-card-footer
-              table
-                tr
-                  td
-                    span 圖片連結
-                  td
-                tr
-                  td
-                    span {{image.src}}
-                  td
-                    b-button(type="button"
-                    v-clipboard:copy="image.src"
-                    v-clipboard:success="onCopy"
-                    v-clipboard:error="onError") 複製
-                tr
-                  td
-                    span HTML
-                  td
-                tr
-                  td
-                    span &lt;img src="{{image.src}}"&gt;
-                  td
-                    b-button(type="button"
-                    v-clipboard:copy="'<img src='+image.src+'>'"
-                    v-clipboard:success="onCopy"
-                    v-clipboard:error="onError") 複製
-                tr
-                  td
-                    span Markdown
-                  td
-                tr
-                  td
-                    span ![]({{image.src}})
-                  td
-                    b-button(type="button"
-                    v-clipboard:copy="'![]('+image.src+')'"
-                    v-clipboard:success="onCopy"
-                    v-clipboard:error="onError") 複製
+      b-card(v-for="(image,index) in images" :key="index")
+        b-row
+          b-col(cols="4")
+            img(:src="image.src")
+          b-col(cols="8")
+            table
+              tr
+                td
+                  //- 隱私權
+                  span(v-if="!image.edit" @click="edit(index)" style="color:#888") ({{image.privacy}})
+                  b-form-select(v-else v-model="image.privacy" :options="privacyOp")
+                td
+              tr
+                td
+                  //- 標題
+                  span#imgtitle(v-if="!image.edit" @click="edit(index)" style="font-size:30px") {{image.title}}
+                  b-form-input(v-else v-model="image.title" @blur="update(index)")
+                td
+              tr
+                td
+                  //- 描述
+                  span#imgdesc(v-if="!image.edit" @click="edit(index)") {{image.description}}
+                  b-form-textarea(v-else v-model="image.description" @blur="update(index)")
+                td
+              tr
+                td
+                  b-btn(v-if="!image.edit" variant="light" @click="edit(index)")
+                    font-awesome-icon(:icon="['far','edit']")
+                td
+                  b-btn(variant="light" @click="del(index)")
+                    font-awesome-icon(:icon="['far','trash-alt']")
+            table
+              tr
+                td
+                  span 圖片連結
+                td
+              tr
+                td
+                  span {{image.src}}
+                td
+                  b-button(type="button"
+                  v-clipboard:copy="image.src"
+                  v-clipboard:success="onCopy"
+                  v-clipboard:error="onError") 複製
+              tr
+                td
+                  span HTML
+                td
+              tr
+                td
+                  span &lt;img src="{{image.src}}"&gt;
+                td
+                  b-button(type="button"
+                  v-clipboard:copy="'<img src='+image.src+'>'"
+                  v-clipboard:success="onCopy"
+                  v-clipboard:error="onError") 複製
+              tr
+                td
+                  span Markdown
+                td
+              tr
+                td
+                  span ![]({{image.src}})
+                td
+                  b-button(type="button"
+                  v-clipboard:copy="'![]('+image.src+')'"
+                  v-clipboard:success="onCopy"
+                  v-clipboard:error="onError") 複製
         //- b-col(cols="12" v-for="(image,index) in images" :key="index")
         //-   b-card
         //-     b-row.inner

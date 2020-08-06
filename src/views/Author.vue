@@ -211,7 +211,7 @@ export default {
               idx.push(i)
             }
           })
-          if (this.images[idx[0]] !== undefined && idx !== null) {
+          if (idx !== null) {
             this.albumCover.push(this.images[idx[0]].src)
           }
         }

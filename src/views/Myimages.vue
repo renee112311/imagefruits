@@ -45,7 +45,7 @@
             b-col.w-100(style="text-align:center")
               b-card-img(:src="images[index].src")
             div.w-100(style="height:1px")
-            b-col
+            b-col(col cols="4")
               b-card-body
                 table
                   tr
@@ -73,7 +73,7 @@
                     td
                       b-btn(variant="light" @click="del(index)")
                         font-awesome-icon(:icon="['far','trash-alt']")
-            b-col
+            b-col(col cols="8")
               b-card-footer
                 table
                   tr

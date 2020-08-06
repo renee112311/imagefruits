@@ -3,13 +3,13 @@
     b-container
       b-btn(@click="tomyimages") 您的檔案已經上傳成功，點擊此處前往「我的圖片」
       p 或是在下方直接編輯
-      b-row
-        b-col(cols="4" v-for="(image,index) in images" :key="index")
+      b-row(v-for="(image,index) in images" :key="index")
+        b-col(cols="4")
           b-card
             b-row.inner
               b-col.w-100(style="text-align:center")
                 b-card-img(:src="image.src")
-        b-col(cols="8" v-for="(image,index) in images" :key="index")
+        b-col(cols="8")
           b-col
             b-card-body
               table

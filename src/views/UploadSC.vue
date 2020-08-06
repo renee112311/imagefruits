@@ -5,9 +5,9 @@
       p 或是在下方直接編輯
       b-card(v-for="(image,index) in images" :key="index")
         b-row
-          b-col(cols="4")
+          b-col(col cols="4")
             img(:src="image.src")
-          b-col(cols="8")
+          b-col(col cols="8")
             table
               tr
                 td
@@ -28,10 +28,9 @@
                   b-form-textarea(v-else v-model="image.description" @blur="update(index)")
                 td
               tr
-                td
+                td.text-right
                   b-btn(v-if="!image.edit" variant="light" @click="edit(index)")
                     font-awesome-icon(:icon="['far','edit']")
-                td
                   b-btn(variant="light" @click="del(index)")
                     font-awesome-icon(:icon="['far','trash-alt']")
             table

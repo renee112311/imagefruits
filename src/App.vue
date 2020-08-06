@@ -183,6 +183,8 @@ export default {
             this.$store.commit('login', this.account)
             if (this.account === 'admin') {
               this.$router.push('/back')
+            }else{
+              location.reload()
             }
           } else {
             this.$swal({

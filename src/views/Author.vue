@@ -202,6 +202,7 @@ export default {
             liked: false
           }
         })
+        console.log(this.albums)
         for (const album of this.albums) {
           const idx = []
           console.log(album)

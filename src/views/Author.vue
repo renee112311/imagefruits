@@ -204,11 +204,13 @@ export default {
         })
         for (const album of this.albums) {
           const idx = []
+          console.log(album)
           this.images.find(function (item, i) {
             if (item.album === album.title) {
               idx.push(i)
             }
           })
+          console.log(idx)
           this.albumCover.push(this.images[idx[0]].src)
         }
       })

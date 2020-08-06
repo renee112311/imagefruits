@@ -88,7 +88,7 @@ export default {
             return
           }
         }
-        this.spinnerstyle.display = 'block'
+        this.spinnerstyle.display = 'inline-block'
         const fd = new FormData()
         for (const i of this.files) {
           fd.append('image', i)

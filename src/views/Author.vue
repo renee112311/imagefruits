@@ -200,16 +200,15 @@ export default {
             liked: false
           }
         })
-        setTimeout(() => {
-          for (let i = 0; i < this.albums.length; i++) {
-            const result = response.data.result.filter(obj => obj.album === this.albums[i].title)
-            this.albumCover = result.map(d => {
-              return {
-                src: process.env.VUE_APP_APIURL + '/file/' + d.name
-              }
-            })
-          }
-        }, 300)
+        for (const album of this.albums) {
+          const idx = []
+          this.images.find(function (item, i) {
+            if (item.album === album.title) {
+              idx.push(i)
+            }
+          })
+          this.albumCover.push(this.images[idx[0]].src)
+        }
       })
       .catch((error) => {
         console.log(error)

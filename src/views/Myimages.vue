@@ -283,14 +283,13 @@ export default {
             album: d.album
           }
         })
-        for (var album of this.albums) {
+        for (const album of this.albums) {
           const idx = []
           this.images.find(function (item, i) {
             if (item.album === album.title) {
               idx.push(i)
             }
           })
-          console.log(this.images[idx[0]].src)
           this.albumCover.push(this.images[idx[0]].src)
         }
       })

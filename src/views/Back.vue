@@ -72,7 +72,7 @@
                   b-td
                     span {{ image.name }}
                   b-td
-                    img(:src="image.src" width="auto" height="20%")
+                    img(:src="image.src" width="auto" height="150px")
                   b-td
                     b-btn(variant="danger" @click="deleteImg(index)") 刪除
           b-tab(title='輪播設定')

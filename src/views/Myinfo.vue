@@ -247,6 +247,16 @@ export default {
           confirmButtonText: '知道了'
         })
       })
+    setTimeout(() => {
+      if (this.banned === true) {
+        this.$swal({
+          title: '您的帳號已被停權，請洽客服',
+          icon: 'error',
+          confirmButtonText: '知道了'
+        })
+        this.$router.push('/')
+      }
+    }, 500)
   }
 
 }

@@ -211,7 +211,9 @@ export default {
               idx.push(i)
             }
           })
-          this.albumCover.push(this.images[idx[0]].src)
+          if (this.images[idx[0]] !== undefined) {
+            this.albumCover.push(this.images[idx[0]].src)
+          }
         }
       })
       .catch((error) => {

@@ -20,7 +20,7 @@
             b-row(v-else)
               b-col(col cols="12" md="6" lg="2" v-for="(album, idx) in albums" :key="idx")
                 b-card(@click="toMyalbum(idx)")
-                  b-card-img(:src="albumCover[idx].src")
+                  b-card-img(v-if="albumCover[idx]!==undefined" :src="albumCover[idx].src")
                   b-card-title(style="color:white;text-shadow:0 0 4px #333") {{album.title}}
 
           b-tab.aboutme(title='關於我')

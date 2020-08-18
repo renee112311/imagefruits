@@ -203,6 +203,7 @@ export default {
             album: d.album
           }
         })
+        console.log(this.images[0])
         for (const album of this.albums) {
           const idx = []
           this.images.find(function (item, i) {
@@ -210,10 +211,12 @@ export default {
               idx.push(i)
             }
           })
+          console.log(idx)
           if (this.images[idx[0]] !== undefined && idx !== null) {
             this.albumCover.push(this.images[idx[0]].src)
           }
         }
+        console.log(this.albumCover)
       })
       .catch((error) => {
         console.log(error)

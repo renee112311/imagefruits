@@ -211,7 +211,7 @@ export default {
             }
           })
           console.log(idx)
-          if (idx !== null) {
+          if (idx !== null && idx.length !== 0) {
             this.albumCover.push(this.images[idx[0]].src)
           }
         }

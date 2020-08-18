@@ -20,7 +20,7 @@
             b-row(v-else)
               b-col(col cols="12" md="6" lg="2" v-for="(album, idx) in albums" :key="idx")
                 b-card(@click="toMyalbum(idx)")
-                  b-card-img(v-if="albumCover.length!==0" :src="albumCover[idx].src")
+                  b-card-img(v-if="albumCover[idx]!==undefined" :src="albumCover[idx].src")
                   b-card-title(style="color:white;text-shadow:0 0 4px #333") {{album.title}}
 
           b-tab.aboutme(title='關於我')
@@ -204,14 +204,12 @@ export default {
         })
         for (const album of this.albums) {
           const idx = []
-          const albumtitle = album.title
           this.images.find(function (item, i) {
-            if (item.album === albumtitle) {
+            if (item.album === album.title) {
               idx.push(i)
             }
           })
-          console.log(idx)
-          if (idx !== null && idx.length !== 0) {
+          if (this.images[idx[0]] !== undefined && idx !== null) {
             this.albumCover.push(this.images[idx[0]].src)
           }
         }

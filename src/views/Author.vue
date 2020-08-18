@@ -199,7 +199,8 @@ export default {
             src: process.env.VUE_APP_APIURL + '/file/' + d.name,
             _id: d._id,
             user: d.user,
-            liked: false
+            liked: false,
+            album: d.album
           }
         })
         for (const album of this.albums) {
@@ -213,7 +214,6 @@ export default {
             this.albumCover.push(this.images[idx[0]].src)
           }
         }
-        console.log(this.albumCover)
       })
       .catch((error) => {
         console.log(error)

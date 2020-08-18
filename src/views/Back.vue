@@ -23,15 +23,12 @@
               )
               b-thead
                 b-tr
-                  b-th 編號
                   b-th 會員帳號
                   b-th 動作
               b-tbody
                 b-tr(v-if="searchuser.length === 0")
                   td 沒有資料
                 b-tr(v-else v-for="(allUser, index) in searchuser" :key="'key' + index")
-                  b-td
-                    span {{ allUser._id }}
                   b-td
                     span {{ allUser.account }}
                   b-td
@@ -56,7 +53,6 @@
               )
               b-thead
                 b-tr
-                  b-th 編號
                   b-th 會員帳號
                   b-th 檔名
                   b-th 內容
@@ -65,8 +61,6 @@
                 b-tr(v-if="searchimg.length === 0")
                   td(colspan="2") 沒有資料
                 b-tr(v-else v-for="(image, index) in searchimg" :key="'key' + index")
-                  b-td
-                    span {{ image._id }}
                   b-td
                     span {{ image.user }}
                   b-td

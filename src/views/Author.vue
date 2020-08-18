@@ -205,7 +205,6 @@ export default {
         for (const album of this.albums) {
           const idx = []
           const albumtitle = album.title
-          console.log(albumtitle)
           this.images.find(function (item, i) {
             if (item.album === albumtitle) {
               idx.push(i)
@@ -215,6 +214,7 @@ export default {
             this.albumCover.push(this.images[idx[0]].src)
           }
         }
+        console.log(this.albumCover)
       })
       .catch((error) => {
         console.log(error)

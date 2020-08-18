@@ -68,6 +68,7 @@
                     b-btn(variant="danger" @click="deleteImg(index)") 刪除
           b-tab(title='輪播設定')
             h4 輪播圖
+            p 一次僅供替換一張
             b-form(@submit="newCarou1")
               b-form-file(
                 v-model="file"
@@ -125,6 +126,7 @@
               p PNG、JPEG、JPG、GIF、BMP
               b-button(type="newCarou4") 更換第四張
 
+            //- 這是當輪播圖被誤刪時，可上傳一批全新輪播圖
             //- b-form(@submit="NN")
             //-   b-form-file(
             //-     v-model="file"

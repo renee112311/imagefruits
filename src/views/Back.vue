@@ -11,12 +11,10 @@
               b-col(col cols="12" xl="4")
                 b-form-select.form-control(v-model="searchType")
                   option 會員帳號
-                  option 會員ID編號
               b-col(col cols="12" xl="8")
                 b-nav-form
                   b-form-input(type="text" size="sm" v-model="keywords" placeholder="輸入關鍵字即可搜尋")
             b-table-simple(
-
               striped
               hover
               responsive="sm"
@@ -42,7 +40,6 @@
               b-col(col cols="12" lg="3")
                 b-form-select.form-control(v-model="searchType")
                   option 會員帳號
-                  option 檔案ID編號
               b-col(col cols="12" lg="9")
                 b-nav-form
                   b-form-input(type="text" size="sm" v-model="keywords" placeholder="輸入關鍵字即可搜尋")
